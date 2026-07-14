@@ -1,0 +1,32 @@
+Package: defillama
+Title: API Wrapper to the DefiLlama API
+Version: 0.0.0.9000
+URL: https://dereckscompany.github.io/defillama,
+    https://github.com/dereckscompany/defillama
+BugReports: https://github.com/dereckscompany/defillama/issues
+Authors@R:
+    person(given = "Dereck",
+           family = "Mezquita",
+           role = c("aut", "cre"),
+           email = "dereck@mezquita.io",
+           comment = c(ORCID = "0000-0002-9307-6762"))
+Description: R API wrapper to the DefiLlama API supporting both synchronous and asynchronous (promise based) operations. Provides R6 classes for stablecoin circulating supply, protocol and chain TVL, DEX volumes, and protocol fees and revenue, built on the shared connectcore transport base.
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Suggests:
+    box,
+    covr,
+    DT,
+    ggplot2,
+    knitr,
+    lintr,
+    microbenchmark,
+    pkgdown,
+    rcmdcheck,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+
