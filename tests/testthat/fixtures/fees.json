@@ -1,0 +1,60 @@
+{
+  "totalDataChart": [
+    [
+      1609459200,
+      50000
+    ],
+    [
+      1609545600,
+      60000
+    ]
+  ],
+  "total24h": 53000000,
+  "total7d": 380000000,
+  "total30d": 1500000000,
+  "total1y": 24000000000,
+  "totalAllTime": 113000000000,
+  "change_1d": -0.5,
+  "change_7d": 3.0,
+  "change_1m": 15.0,
+  "protocols": [
+    {
+      "id": "10",
+      "name": "AAVE",
+      "displayName": "Aave",
+      "module": "aave",
+      "category": "Lending",
+      "protocolType": "protocol",
+      "slug": "aave",
+      "defillamaId": "parent#aave",
+      "logo": "https://example.test/icons/aave",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 930000,
+      "total7d": 6400000,
+      "total30d": 28000000,
+      "total1y": 300000000,
+      "totalAllTime": 1000000000,
+      "change_1d": 2.1,
+      "change_7d": 1.5,
+      "change_1m": 8.0
+    },
+    {
+      "id": "11",
+      "name": "NoData",
+      "displayName": "NoData",
+      "module": "nodata",
+      "category": "Fees",
+      "protocolType": "protocol",
+      "slug": "nodata",
+      "defillamaId": "999",
+      "logo": "https://example.test/icons/nodata",
+      "chains": [
+        "BSC"
+      ],
+      "total24h": null,
+      "totalAllTime": 123456
+    }
+  ]
+}

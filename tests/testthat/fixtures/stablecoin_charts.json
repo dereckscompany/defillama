@@ -1,0 +1,29 @@
+[
+  {
+    "date": "1704067200",
+    "totalCirculating": {
+      "peggedUSD": 100
+    },
+    "totalCirculatingUSD": {
+      "peggedUSD": 101
+    }
+  },
+  {
+    "date": "1704153600",
+    "totalCirculating": {
+      "peggedUSD": 200
+    },
+    "totalUnreleased": {
+      "peggedUSD": 5
+    },
+    "totalCirculatingUSD": {
+      "peggedUSD": 202
+    },
+    "totalMintedUSD": {
+      "peggedUSD": 0
+    },
+    "totalBridgedToUSD": {
+      "peggedUSD": 0
+    }
+  }
+]

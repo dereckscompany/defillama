@@ -1,0 +1,60 @@
+{
+  "peggedAssets": [
+    {
+      "id": "1",
+      "name": "Tether",
+      "symbol": "USDT",
+      "gecko_id": "tether",
+      "pegType": "peggedUSD",
+      "priceSource": "defillama",
+      "pegMechanism": "fiat-backed",
+      "circulating": {
+        "peggedUSD": 100000000000
+      },
+      "circulatingPrevDay": {
+        "peggedUSD": 99500000000
+      },
+      "circulatingPrevWeek": {
+        "peggedUSD": 99000000000
+      },
+      "circulatingPrevMonth": {
+        "peggedUSD": 98000000000
+      },
+      "chains": [
+        "Ethereum",
+        "Tron",
+        "BSC"
+      ],
+      "price": 1.0
+    },
+    {
+      "id": "5",
+      "name": "Dai",
+      "symbol": "DAI",
+      "gecko_id": null,
+      "pegType": "peggedUSD",
+      "pegMechanism": "crypto-backed",
+      "circulating": {
+        "peggedUSD": 5000000000
+      },
+      "circulatingPrevDay": {
+        "peggedUSD": 5010000000
+      },
+      "circulatingPrevWeek": {
+        "peggedUSD": 4900000000
+      },
+      "circulatingPrevMonth": {
+        "peggedUSD": 4800000000
+      },
+      "chains": [
+        "Ethereum"
+      ],
+      "price": null
+    }
+  ],
+  "chains": [
+    "Ethereum",
+    "Tron",
+    "BSC"
+  ]
+}

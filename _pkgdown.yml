@@ -5,7 +5,7 @@ template:
 
 navbar:
   structure:
-    left: [intro, reference, articles]
+    left: [reference]
     right: [search, github]
   components:
     github:
@@ -14,13 +14,29 @@ navbar:
       aria-label: GitHub repository
 
 reference:
-  - title: R Functions
-    desc: Pure R functions
+  - title: Stablecoins
+    desc: Stablecoin circulating supply, history, and market cap per chain.
     contents:
-      - add
-
-articles:
-  - title: Getting Started
-    navbar: ~
+      - DefiLlamaStablecoins
+  - title: Protocol and chain TVL
+    desc: DeFi protocol and chain total value locked, current and historical.
     contents:
-      - demo
+      - DefiLlamaProtocols
+  - title: DEX volumes and fees
+    desc: The dimension-adapter clients for trading volumes and fees/revenue.
+    contents:
+      - DefiLlamaVolumes
+      - DefiLlamaFees
+  - title: Base class and configuration
+    desc: The shared transport base, URL getters, and data-type vocabularies.
+    contents:
+      - DefiLlamaBase
+      - defillama_base_url
+      - defillama_stablecoins_url
+      - DEX_DATA_TYPES
+      - FEES_DATA_TYPES
+  - title: Conditions and shapes
+    desc: The typed condition family and the documented return shapes.
+    contents:
+      - defillama_conditions
+      - defillama_shapes
