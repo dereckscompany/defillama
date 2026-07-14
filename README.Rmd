@@ -2,131 +2,143 @@
 output: github_document
 ---
 
-```{r, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
     warning = FALSE,
     message = FALSE,
-    fig.path = "./man/figures/README-",
-    fig.align = "center",
-    fig.width = 12,
-    fig.height = 10,
-    dpi = 150,
-    collapse = TRUE,
+    results = "hold",
     comment = "#>"
 )
+
+# Package symbols used throughout, plus the shared mock HTTP router.
+box::use(
+    defillama[
+        DefiLlamaStablecoins,
+        DefiLlamaProtocols,
+        DefiLlamaVolumes,
+        DefiLlamaFees
+    ],
+    connectcore[local_mock_api],
+    ./tests/testthat/mock_router[.mock_routes]
+)
+
+# connectcore::local_mock_api installs the shared router (built from the
+# defillama route table of FULLY SYNTHETIC fixtures) as httr2's global mock
+# hook, so it intercepts every req_perform / req_perform_promise call and the
+# document renders against deterministic data with no network.
+local_mock_api(.mock_routes)
 ```
 
 # defillama
 
-R API wrapper to the DefiLlama API supporting both synchronous and asynchronous (promise based) operations. Provides R6 classes for stablecoin circulating supply, protocol and chain TVL, DEX volumes, and protocol fees and revenue, built on the shared connectcore transport base.
+R API wrapper to the [DefiLlama](https://defillama.com) API supporting both synchronous and asynchronous (promise based) operations. Provides keyless R6 classes for stablecoin circulating supply, protocol and chain TVL, DEX volumes, and protocol fees and revenue, built on the shared [connectcore](https://github.com/dereckscompany/connectcore) transport base.
 
-## Features
+## What this is
 
-| Feature | Description |
-|---------|-------------|
-| **testthat** | Unit testing framework with separate test files |
-| **roxygen2** | Documentation generation from code comments |
-| **pkgdown** | Automatic documentation website |
-| **renv** | Reproducible dependency management |
-| **GitHub Actions** | CI/CD for R-CMD-check and pkgdown deployment |
-| **air** | Extremely fast R code formatter (Rust-based) |
+DefiLlama is the leading open aggregator of on-chain crypto data: how much value is locked in every DeFi protocol and on every chain (TVL), how much every stablecoin has in circulation, how much volume decentralized exchanges trade, and how much fees and revenue protocols earn. It is a documented, **keyless** public JSON API. This package gives you those series as tidy `data.table`s, both synchronously and asynchronously, with typed errors and a faithful, low-level shape.
 
-## Project Structure
+It is a faithful wrapper: it keeps DefiLlama's field names (snake_cased), unwraps its peculiar peg-nested amount format, and returns clean tables — but it does not editorialise the data.
 
-```
-├── R/
-│   └── add.R              # Pure R function example
-├── tests/testthat/        # Unit tests
-├── vignettes/             # Package vignettes
-├── scripts/
-│   └── BUILD.sh           # Build automation script
-├── .github/workflows/     # CI/CD workflows
-└── _pkgdown.yml           # Documentation site config
-```
+## Design philosophy
 
-## Dependencies (renv)
-
-This package ships with [renv](https://rstudio.github.io/renv/) — the
-project library is isolated and pinned by `renv.lock`. First time after
-cloning:
-
-```r
-renv::restore()
-```
-
-Adding a dependency:
-
-```r
-renv::install("somepkg")        # install into the project library
-# add it to DESCRIPTION (Imports or Suggests), then:
-renv::snapshot(dev = TRUE)      # record it in renv.lock (dev = TRUE includes Suggests)
-```
-
-CI restores the same lockfile (`r-lib/actions/setup-renv`), so checks run
-against exactly the versions you develop with.
-
-## Build Commands
-
-```bash
-# Full workflow: document → clean → build → check → install
-./scripts/BUILD.sh all
-
-# Quick development iteration (skip R CMD check)
-./scripts/BUILD.sh quick
-
-# Generate documentation only
-./scripts/BUILD.sh document
-
-# Format R code with air
-./scripts/FORMAT.sh
-
-# Check formatting (for CI)
-./scripts/FORMAT.sh check
-
-# Build pkgdown site
-./scripts/BUILD.sh pkgdown
-
-# Render README.Rmd to README.md
-./scripts/BUILD.sh readme
-
-# See all options
-./scripts/BUILD.sh help
-```
-
-## Usage
-
-```r
-library(defillama)
-
-# Pure R function
-add(1, 2)
-#> [1] 3
-```
+- **`data.table` everywhere, no list columns.** Every method returns one flat `data.table`; measurement columns (supplies, TVL, volumes, fees) are typed nullable because DefiLlama omits fields freely, structural columns strict.
+- **Sync and async.** Every request-making surface works in both modes. `async = TRUE` returns a [promise][promises::promise]; otherwise the table is returned directly. There is a single sync/async branch point (inherited from `connectcore`).
+- **Keyless.** DefiLlama's public endpoints need no API key, so nothing is ever required or read.
+- **Typed errors.** Every failure is a classed condition (`defillama_api_error`, `defillama_validation_error`) carrying structured fields — you branch on the type, never grep the message.
 
 ## Installation
 
-```r
-# From GitHub (via renv)
-renv::install("dereckscompany/defillama")
+This project uses [`renv`](https://rstudio.github.io/renv/). Add `defillama` to your lockfile and restore:
 
-# From CRAN (when available)
-renv::install("defillama")
+```{r install, eval = FALSE}
+renv::install("dereckscompany/defillama")
+# or, without renv:
+# remotes::install_github("dereckscompany/defillama")
 ```
 
-### Requirements
+## Stablecoins
 
-- R >= 4.0
-- [air](https://posit-dev.github.io/air/) for code formatting (optional)
+Every tracked stablecoin with its current circulating supply and price. DefiLlama nests each amount under its **peg type** key (e.g. `peggedUSD`); the wrapper unwraps the value and records the peg type in a `peg_type` column.
 
-## CI/CD
+```{r stablecoins}
+sc <- DefiLlamaStablecoins$new()
 
-GitHub Actions workflows included:
+stablecoins <- sc$get_stablecoins()
+stablecoins[, .(symbol, peg_mechanism, circulating, price)]
+```
 
-- **R-CMD-check**: Tests on macOS, Windows, Ubuntu with multiple R versions
-- **pkgdown**: Builds and deploys documentation to GitHub Pages
+The full daily circulating-supply history of one stablecoin (by pegged-asset id) comes in a single call. The optional supply measures (`total_unreleased`, `total_minted_usd`, `total_bridged_to_usd`) are present on only a minority of days — an absent measure is `NA`, never `0`, so a genuine zero and a missing value stay distinguishable:
 
-Both workflows use `concurrency` to cancel in-progress runs when new commits are pushed.
+```{r stablecoin-charts}
+sc$get_stablecoin_charts(stablecoin_id = 1)
+```
 
-## License
+`get_stablecoin_chains()` gives the current stablecoin market cap per chain.
 
-MIT
+## Protocol and chain TVL
+
+The list of every DeFi protocol with its current total value locked. A protocol with no locked value (e.g. a pure DEX) legitimately reports `NA` TVL, and a multi-chain protocol has an `NA` singular `chain` (see the `chains` column instead):
+
+```{r protocols}
+tvl <- DefiLlamaProtocols$new()
+
+protocols <- tvl$get_protocols()
+protocols[, .(name, category, chain, chains, tvl)]
+```
+
+`get_protocol("aave")` returns one protocol's full historical TVL, `get_chains()` the current TVL of every chain, and `get_historical_chain_tvl("Ethereum")` (or no argument for the whole DeFi aggregate) a chain's historical TVL.
+
+## DEX volumes
+
+The per-DEX volume breakdown — one row per protocol with trailing 24h/7d/30d/1y/all-time totals. The `data_type` argument selects the volume series; the `data_type` column records which, so the table stays self-describing:
+
+```{r dexs}
+vol <- DefiLlamaVolumes$new()
+
+dexs <- vol$get_dexs_overview()
+dexs[, .(name, data_type, total24h, total7d, total_all_time)]
+```
+
+`get_dexs_chart()` returns the aggregate daily DEX-volume time series.
+
+## Fees and revenue
+
+The fees adapter shares the shape but a distinct domain: the `data_type` selector switches the totals between fees paid (`dailyFees`), protocol revenue (`dailyRevenue`), and holders' revenue (`dailyHoldersRevenue`):
+
+```{r fees}
+fees <- DefiLlamaFees$new()
+
+fees$get_fees_overview(data_type = "dailyRevenue")[, .(name, data_type, total24h, total_all_time)]
+```
+
+`get_fees_chart()` returns the aggregate daily fees time series.
+
+## Asynchronous usage
+
+Set `async = TRUE` and consume the promise with `coro::async` / `await`, driving the event loop with `later`:
+
+```{r async, eval = FALSE}
+box::use(coro, later)
+
+sc_async <- DefiLlamaStablecoins$new(async = TRUE)
+
+main <- coro::async(function() {
+    charts <- await(sc_async$get_stablecoin_charts(stablecoin_id = 1))
+    print(charts)
+})
+
+main()
+while (!later::loop_empty()) later::run_now()
+```
+
+## Error handling
+
+Every failure is a classed condition. An invalid `data_type` is caught locally before any request; a DefiLlama HTTP error (e.g. an unknown protocol slug) surfaces as a typed `defillama_api_error` carrying its `status`:
+
+```{r errors}
+result <- tryCatch(
+    vol$get_dexs_overview(data_type = "not_a_real_type"),
+    defillama_validation_error = function(e) paste("caught:", conditionMessage(e))
+)
+result
+```

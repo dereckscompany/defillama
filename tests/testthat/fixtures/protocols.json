@@ -1,0 +1,45 @@
+[
+  {
+    "id": "111",
+    "name": "AAVE V3",
+    "symbol": "AAVE",
+    "chain": "Ethereum",
+    "category": "Lending",
+    "chains": [
+      "Ethereum",
+      "Polygon"
+    ],
+    "url": "https://aave.com",
+    "logo": "https://example.test/icons/aave",
+    "gecko_id": "aave",
+    "cmcId": "7278",
+    "tvl": 15000000000,
+    "change_1h": 0.1,
+    "change_1d": -0.5,
+    "change_7d": 2.3,
+    "mcap": 4000000000,
+    "staking": 200000000,
+    "pool2": null
+  },
+  {
+    "id": "222",
+    "name": "Uniswap",
+    "symbol": "UNI",
+    "category": "Dexes",
+    "chains": [
+      "Ethereum",
+      "Arbitrum",
+      "Base"
+    ],
+    "url": "https://uniswap.org",
+    "logo": "https://example.test/icons/uni",
+    "gecko_id": "uniswap",
+    "cmcId": null,
+    "parentProtocol": "parent#uniswap",
+    "tvl": null,
+    "change_1h": null,
+    "change_1d": 1.2,
+    "change_7d": null,
+    "mcap": 5000000000
+  }
+]

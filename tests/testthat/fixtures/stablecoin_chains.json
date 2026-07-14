@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ethereum",
+    "totalCirculatingUSD": {
+      "peggedUSD": 80000000000
+    }
+  },
+  {
+    "name": "Tron",
+    "totalCirculatingUSD": {
+      "peggedUSD": 50000000000
+    }
+  }
+]

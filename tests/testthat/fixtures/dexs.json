@@ -1,0 +1,62 @@
+{
+  "totalDataChart": [
+    [
+      1609459200,
+      1000000
+    ],
+    [
+      1609545600,
+      1200000
+    ]
+  ],
+  "total24h": 7000000,
+  "total7d": 40000000,
+  "total30d": 200000000,
+  "total1y": 4000000000,
+  "totalAllTime": 13000000000,
+  "change_1d": 5.0,
+  "change_7d": 10.0,
+  "change_1m": 80.0,
+  "protocols": [
+    {
+      "id": "1",
+      "name": "Uniswap",
+      "displayName": "Uniswap",
+      "module": "uniswap",
+      "category": "Dexs",
+      "protocolType": "protocol",
+      "slug": "uniswap",
+      "defillamaId": "parent#uniswap",
+      "logo": "https://example.test/icons/uni",
+      "chains": [
+        "Ethereum",
+        "Arbitrum"
+      ],
+      "parentProtocol": "parent#uniswap",
+      "total24h": 2900000000,
+      "total7d": 14000000000,
+      "total30d": 41000000000,
+      "total1y": 850000000000,
+      "totalAllTime": 3700000000000,
+      "change_1d": 35.9,
+      "change_7d": 4.2,
+      "change_1m": 12.0
+    },
+    {
+      "id": "2",
+      "name": "NewDex",
+      "displayName": "NewDex",
+      "module": "newdex",
+      "category": "Dexs",
+      "protocolType": "protocol",
+      "slug": "newdex",
+      "defillamaId": "333",
+      "logo": "https://example.test/icons/newdex",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": null,
+      "totalAllTime": 5000000
+    }
+  ]
+}

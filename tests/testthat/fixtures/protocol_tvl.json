@@ -1,0 +1,20 @@
+{
+  "id": "parent#aave",
+  "name": "Aave",
+  "symbol": "AAVE",
+  "chains": [
+    "Ethereum",
+    "Polygon"
+  ],
+  "tvl": [
+    {
+      "date": 1589932800,
+      "totalLiquidityUSD": 54026260
+    },
+    {
+      "date": 1590019200,
+      "totalLiquidityUSD": 60000000
+    }
+  ],
+  "mcap": 4000000000
+}
