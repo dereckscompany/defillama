@@ -1,6 +1,20 @@
 
 # defillama
 
+**In plain terms:** DefiLlama is the most widely used free tracker of
+where money sits and moves in decentralised finance (DeFi) — the corner
+of crypto where lending, trading, and saving happen through open
+software rather than through a company. It answers questions like how
+many dollars are deposited in each app and on each blockchain, how much
+of each stablecoin (a crypto token meant to hold a steady value, usually
+one US dollar) is in circulation, how much trading the decentralised
+exchanges do, and how much those apps earn in fees. This package pulls
+all of that into clean tables you can work with in R, with no sign-up or
+key required. It reports DefiLlama’s numbers faithfully and leaves the
+interpretation to you.
+
+## Technical overview
+
 R API wrapper to the [DefiLlama](https://defillama.com) API supporting
 both synchronous and asynchronous (promise based) operations. Provides
 keyless R6 classes for stablecoin circulating supply, protocol and chain
