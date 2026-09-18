@@ -46,7 +46,7 @@ It is a faithful wrapper: it keeps DefiLlama's field names (snake_cased), unwrap
 ## Design philosophy
 
 - **`data.table` everywhere, no list columns.** Every method returns one flat `data.table`; measurement columns (supplies, TVL, volumes, fees) are typed nullable because DefiLlama omits fields freely, structural columns strict.
-- **Sync and async.** Every request-making surface works in both modes. `async = TRUE` returns a [promise][promises::promise]; otherwise the table is returned directly. There is a single sync/async branch point (inherited from `connectcore`).
+- **Sync and async.** Every request-making surface works in both modes. `async = TRUE` returns a [promise](https://rstudio.github.io/promises/); otherwise the table is returned directly. There is a single sync/async branch point (inherited from `connectcore`).
 - **Keyless.** DefiLlama's public endpoints need no API key, so nothing is ever required or read.
 - **Typed errors.** Every failure is a classed condition (`defillama_api_error`, `defillama_validation_error`) carrying structured fields — you branch on the type, never grep the message.
 
