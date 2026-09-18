@@ -5,7 +5,7 @@
 # (one method -> one data.table): the overview rows and the aggregate chart. The
 # `data_type` selector chooses the volume series (dailyVolume / totalVolume).
 
-#' DefiLlamaVolumes: Decentralized-Exchange Trading Volumes
+#' DefiLlamaVolumes: Decentralised-Exchange Trading Volumes
 #'
 #' @description
 #' Retrieves DefiLlama's DEX-volumes overview: the per-DEX volume breakdown (one row

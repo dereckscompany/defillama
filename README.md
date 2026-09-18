@@ -1,16 +1,16 @@
 
 # defillama
 
-**In plain terms:** DefiLlama is the most widely used free tracker of
-where money sits and moves in decentralised finance (DeFi) — the corner
-of crypto where lending, trading, and saving happen through open
-software rather than through a company. It answers questions like how
-many dollars are deposited in each app and on each blockchain, how much
-of each stablecoin (a crypto token meant to hold a steady value, usually
-one US dollar) is in circulation, how much trading the decentralised
-exchanges do, and how much those apps earn in fees. This package pulls
-all of that into clean tables you can work with in R, with no sign-up or
-key required. It reports DefiLlama’s numbers faithfully and leaves the
+DefiLlama is the most widely used free tracker of where money sits and
+moves in decentralised finance (DeFi) — the corner of crypto where
+lending, trading, and saving happen through open software rather than
+through a company. It answers questions like how many dollars are
+deposited in each app and on each blockchain, how much of each
+stablecoin (a crypto token meant to hold a steady value, usually one US
+dollar) is in circulation, how much trading the decentralised exchanges
+do, and how much those apps earn in fees. This package pulls all of that
+into clean tables you can work with in R, with no sign-up or key
+required. It reports DefiLlama’s numbers faithfully and leaves the
 interpretation to you.
 
 ## Technical overview
@@ -27,7 +27,7 @@ base.
 DefiLlama is the leading open aggregator of on-chain crypto data: how
 much value is locked in every DeFi protocol and on every chain (TVL),
 how much every stablecoin has in circulation, how much volume
-decentralized exchanges trade, and how much fees and revenue protocols
+decentralised exchanges trade, and how much fees and revenue protocols
 earn. It is a documented, **keyless** public JSON API. This package
 gives you those series as tidy `data.table`s, both synchronously and
 asynchronously, with typed errors and a faithful, low-level shape.
