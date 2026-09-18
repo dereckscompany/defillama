@@ -1,6 +1,6 @@
 Package: defillama
 Title: API Wrapper to the DefiLlama API
-Version: 0.1.0
+Version: 0.1.1
 URL: https://dereckscompany.github.io/defillama,
     https://github.com/dereckscompany/defillama
 BugReports: https://github.com/dereckscompany/defillama/issues

@@ -43,9 +43,10 @@ returns clean tables — but it does not editorialise the data.
   are typed nullable because DefiLlama omits fields freely, structural
   columns strict.
 - **Sync and async.** Every request-making surface works in both modes.
-  `async = TRUE` returns a \[promise\]\[promises::promise\]; otherwise
-  the table is returned directly. There is a single sync/async branch
-  point (inherited from `connectcore`).
+  `async = TRUE` returns a
+  [promise](https://rstudio.github.io/promises/); otherwise the table is
+  returned directly. There is a single sync/async branch point
+  (inherited from `connectcore`).
 - **Keyless.** DefiLlama’s public endpoints need no API key, so nothing
   is ever required or read.
 - **Typed errors.** Every failure is a classed condition
