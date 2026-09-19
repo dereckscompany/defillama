@@ -2,7 +2,7 @@
 % Please edit documentation in R/DefiLlamaVolumes.R
 \name{DefiLlamaVolumes}
 \alias{DefiLlamaVolumes}
-\title{DefiLlamaVolumes: Decentralized-Exchange Trading Volumes}
+\title{DefiLlamaVolumes: Decentralised-Exchange Trading Volumes}
 \description{
 Retrieves DefiLlama's DEX-volumes overview: the per-DEX volume breakdown (one row
 per protocol, with trailing 24h/7d/30d/1y/all-time totals) and the aggregate daily
