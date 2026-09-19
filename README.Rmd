@@ -31,13 +31,11 @@ local_mock_api(.mock_routes)
 
 # defillama
 
-DefiLlama is the most widely used free tracker of where money sits and moves in decentralised finance (DeFi) — the corner of crypto where lending, trading, and saving happen through open software rather than through a company. It answers questions like how many dollars are deposited in each app and on each blockchain, how much of each stablecoin (a crypto token meant to hold a steady value, usually one US dollar) is in circulation, how much trading the decentralised exchanges do, and how much those apps earn in fees. This package pulls all of that into clean tables you can work with in R, with no sign-up or key required. It reports DefiLlama's numbers faithfully and leaves the interpretation to you.
+**DefiLlama is the most widely used free tracker of where money sits and moves in decentralised finance (DeFi) — the corner of crypto where lending, trading, and saving happen through open software rather than through a company.** It answers questions like how many dollars are deposited in each app and on each blockchain, how much of each stablecoin (a crypto token meant to hold a steady value, usually one US dollar) is in circulation, how much trading the decentralised exchanges do, and how much those apps earn in fees. This package pulls all of that into clean tables you can work with in R, with no sign-up or key required. It reports DefiLlama's numbers faithfully and leaves the interpretation to you.
 
 ## Technical overview
 
 R API wrapper to the [DefiLlama](https://defillama.com) API supporting both synchronous and asynchronous (promise based) operations. Provides keyless R6 classes for stablecoin circulating supply, protocol and chain TVL, DEX volumes, and protocol fees and revenue, built on the shared [connectcore](https://github.com/dereckscompany/connectcore) transport base.
-
-## What this is
 
 DefiLlama is the leading open aggregator of on-chain crypto data: how much value is locked in every DeFi protocol and on every chain (TVL), how much every stablecoin has in circulation, how much volume decentralised exchanges trade, and how much fees and revenue protocols earn. It is a documented, **keyless** public JSON API. This package gives you those series as tidy `data.table`s, both synchronously and asynchronously, with typed errors and a faithful, low-level shape.
 
@@ -146,3 +144,19 @@ result <- tryCatch(
 )
 result
 ```
+
+## Documentation
+
+The rendered reference site is at [dereckscompany.github.io/defillama](https://dereckscompany.github.io/defillama).
+
+The full release history is in [`NEWS.md`](NEWS.md).
+
+## Citation
+
+Cite as:
+
+> Mezquita, D. (2026). defillama: API Wrapper to the DefiLlama API. R package version 0.1.3. https://github.com/dereckscompany/defillama.
+
+## Licence
+
+MIT © Dereck Mezquita

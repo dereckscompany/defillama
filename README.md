@@ -1,10 +1,10 @@
 
 # defillama
 
-DefiLlama is the most widely used free tracker of where money sits and
+**DefiLlama is the most widely used free tracker of where money sits and
 moves in decentralised finance (DeFi) — the corner of crypto where
 lending, trading, and saving happen through open software rather than
-through a company. It answers questions like how many dollars are
+through a company.** It answers questions like how many dollars are
 deposited in each app and on each blockchain, how much of each
 stablecoin (a crypto token meant to hold a steady value, usually one US
 dollar) is in circulation, how much trading the decentralised exchanges
@@ -21,8 +21,6 @@ keyless R6 classes for stablecoin circulating supply, protocol and chain
 TVL, DEX volumes, and protocol fees and revenue, built on the shared
 [connectcore](https://github.com/dereckscompany/connectcore) transport
 base.
-
-## What this is
 
 DefiLlama is the leading open aggregator of on-chain crypto data: how
 much value is locked in every DeFi protocol and on every chain (TVL),
@@ -204,3 +202,21 @@ result
 ```
 
     #> [1] "caught: Invalid data_type 'not_a_real_type'. Valid values: dailyVolume, totalVolume."
+
+## Documentation
+
+The rendered reference site is at
+[dereckscompany.github.io/defillama](https://dereckscompany.github.io/defillama).
+
+The full release history is in [`NEWS.md`](NEWS.md).
+
+## Citation
+
+Cite as:
+
+> Mezquita, D. (2026). defillama: API Wrapper to the DefiLlama API. R
+> package version 0.1.3. <https://github.com/dereckscompany/defillama>.
+
+## Licence
+
+MIT © Dereck Mezquita

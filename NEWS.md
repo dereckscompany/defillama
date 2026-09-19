@@ -1,3 +1,15 @@
+# defillama 0.1.3
+
+**The README now follows the one shape used across the whole connector fleet, and it gains a documentation index, a citation, and a licence section.** This release reshapes `README.Rmd` into the fleet's canonical section order (owner ruling 20, 2026-09-18): a plain-English lead, a technical overview, a design philosophy, installation, one section per API surface, asynchronous usage, error handling, and finally a documentation index, a citation, and the licence. No sentence was rewritten and no code chunk's behaviour changed; the existing sections were only merged or moved into their new slots, and three sections that did not exist before, Documentation, Citation and Licence, were built from the package's own metadata.
+
+- Bolded the opening sentence of the plain-English lead paragraph; the rest of the paragraph is unchanged.
+- Merged `## What this is` into `## Technical overview` by removing the intervening heading; both of its paragraphs are kept, unedited, immediately after the existing technical-overview paragraph.
+- Omitted `## Quick start`: no quick-start content exists apart from the per-surface usage sections themselves, so none was invented; the same choice already stands in the `connectcore` connector.
+- Added `## Documentation`, naming the pkgdown site (the first, github.io URL in `DESCRIPTION`'s `URL:` field) and pointing to `NEWS.md`; the package ships no `vignettes/` directory, so no vignette ladder is listed.
+- Added `## Citation`, a "Cite as" line built only from `DESCRIPTION` (`Authors@R`, `Title`, `Version`, and the repository URL); no DOI or journal, since neither exists.
+- Added `## Licence`: the README had no licence section before; the new line names the licence the package already ships (`LICENSE`, MIT, Dereck Mezquita).
+- `README.md` re-rendered from `README.Rmd` against the shared mock router; no chunk options, `eval` flags, or fixtures changed.
+
 # defillama 0.1.2
 
 **Tidied the package's prose: dropped the visible "plain English" labels and fixed a few American spellings, no behaviour change.**
